@@ -8,6 +8,25 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/TopText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Tom N Jerry"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textSize="34sp"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/SarchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:height="50dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Sarch bar" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ResView"
         android:layout_width="match_parent"

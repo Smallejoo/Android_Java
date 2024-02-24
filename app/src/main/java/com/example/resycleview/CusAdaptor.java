@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,7 +19,7 @@ public class CusAdaptor extends RecyclerView.Adapter<CusAdaptor.ViewHolder> {
     {
         this.Data=data;
     }
-    public static class ViewHolder extends RecyclerView.ViewHolder
+    public static class ViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener
     {
         TextView Text1;
         TextView Text2;
@@ -28,6 +29,22 @@ public class CusAdaptor extends RecyclerView.Adapter<CusAdaptor.ViewHolder> {
             Text1=View.findViewById(R.id.Text1);
             Text2=View.findViewById(R.id.Text2);
             Image1=View.findViewById(R.id.Image);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition(); // Get the position of the clicked item
+            if (position != RecyclerView.NO_POSITION) {
+                // Access the clicked item data
+                TextView nam1e = (v.findViewById(R.id.Text1));
+                String name= nam1e.getText().toString();
+               // String itemName = clickedItem.getName();
+
+                // Show a toast with the clicked item name
+                Toast.makeText(v.getContext(), "Clicked: " + name, Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
     @NonNull
@@ -49,6 +66,12 @@ public class CusAdaptor extends RecyclerView.Adapter<CusAdaptor.ViewHolder> {
         text2.setText(Data.get(position).getDescription());
         image.setImageResource(Data.get(position).getImage());
 
+    }
+    public void UpdateNewData(ArrayList<DataModule> newData)
+    {
+        //Data.clear();
+        Data=newData;
+        notifyDataSetChanged();
     }
 
     @Override
